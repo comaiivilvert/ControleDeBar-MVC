@@ -3,6 +3,7 @@ using ControleDeBar.Infraestrutura.Arquivos.Compartilhado;
 using ControleDeBar.Infraestrutura.Arquivos.ModuloMesa;
 using ControleDeBar.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ControleDeBar.WebApp.Controllers
 {
@@ -16,7 +17,7 @@ namespace ControleDeBar.WebApp.Controllers
             ContextoDados contexto = new ContextoDados(carregarDados: true);
             repositorioMesa = new RepositorioMesaEmArquivo(contexto);
         }
-            
+
         public IActionResult Index()
         {
 
@@ -25,5 +26,76 @@ namespace ControleDeBar.WebApp.Controllers
 
             return View(visualizarVm);
         }
+
+        [HttpGet]
+        public ActionResult Cadastrar()
+        {
+            CadastrarMesaViewModel cadastrarVm = new CadastrarMesaViewModel();
+
+            return View(cadastrarVm);
+        }
+
+        [HttpPost]
+        public ActionResult Cadastrar(CadastrarMesaViewModel cadastrarVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(cadastrarVm);
+            }
+
+            var entidade = new Mesa(cadastrarVm.Numero, cadastrarVm.Capacidade);
+            repositorioMesa.CadastrarRegistro(entidade);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public ActionResult Editar(int id)
+        {
+            var registro = repositorioMesa.SelecionarRegistroPorId(id);
+
+            EditarMesaViewModel editarVm = new EditarMesaViewModel(
+                id,
+                registro.Numero,
+                registro.Capacidade
+                );
+
+            return View(editarVm);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(EditarMesaViewModel editarVm)
+        {
+            if (!ModelState.IsValid)
+            { return View(editarVm); }
+
+            var mesaEditada = new Mesa(editarVm.Numero, editarVm.Capacidade);
+            repositorioMesa.EditarRegistro(editarVm.Id, mesaEditada);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public ActionResult Excluir(int id)
+        {
+            var registro = repositorioMesa.SelecionarRegistroPorId(id);
+
+            ExcluirMesaViewModel excluirVm = new ExcluirMesaViewModel(
+                id,
+                registro.Numero
+                );
+
+            return View(excluirVm);
+        }
+
+        [HttpPost]
+        public ActionResult Excluir(ExcluirMesaViewModel excluirVm)
+        {
+            repositorioMesa.ExcluirRegistro(excluirVm.Id);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
-}
+    }

@@ -14,6 +14,15 @@ public abstract class RepositorioBaseEmArquivo<Tipo> where Tipo : EntidadeBase<T
         this.contextoDados = contextoDados;
 
         registros = ObterRegistros();
+
+        int maiorId = 0;
+
+                foreach (Tipo registro in registros)
+            {
+            if (registro != null && registro.Id > maiorId)
+                maiorId = registro.Id;
+        }
+
     }
 
     protected abstract List<Tipo> ObterRegistros();
@@ -50,7 +59,7 @@ public abstract class RepositorioBaseEmArquivo<Tipo> where Tipo : EntidadeBase<T
 
             else if (registros[i].Id == idSelecionado)
             {
-                registros[i] = null;
+                registros.Remove(registros[i]);
 
                 contextoDados.Salvar();
 

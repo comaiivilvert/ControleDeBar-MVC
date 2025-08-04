@@ -48,7 +48,7 @@ public class ProdutoController : Controller
     }
 
     [HttpGet]
-    public IActionResult Editar(int id)
+    public IActionResult Editar(Guid id)
     {
         var registro = repositorioProduto.SelecionarRegistroPorId(id);
 
@@ -75,7 +75,7 @@ public class ProdutoController : Controller
     }
 
     [HttpGet]
-    public IActionResult Excluir(int id)
+    public IActionResult Excluir(Guid id)
     {
         var registro = repositorioProduto.SelecionarRegistroPorId(id);
 

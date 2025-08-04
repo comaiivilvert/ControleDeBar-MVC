@@ -88,7 +88,7 @@ public class Conta : EntidadeBase<Conta>
         return novoPedido;
     }
 
-    public void RemoverPedido(int idPedido)
+    public void RemoverPedido(Guid idPedido)
     {
         int indiceParaRemover = -1;
 

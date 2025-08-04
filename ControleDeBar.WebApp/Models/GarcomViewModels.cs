@@ -20,7 +20,7 @@ public class CadastrarGarcomViewModel
 }
 public class EditarGarcomViewModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [Required(ErrorMessage = "O campo \"Nome\" é obrigatório.")]
     [MinLength(2, ErrorMessage = "O campo \"Nome\" deve conter ao menos 2 caracteres.")]
@@ -35,7 +35,7 @@ public class EditarGarcomViewModel
     {
     }
 
-    public EditarGarcomViewModel(int id, string nome, string cpf)
+    public EditarGarcomViewModel(Guid id, string nome, string cpf)
     {
         Id = id;
         Nome = nome;
@@ -45,14 +45,14 @@ public class EditarGarcomViewModel
 
 public class ExcluirGarcomViewModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string Nome { get; set; }
 
     public ExcluirGarcomViewModel()
     {
     }
 
-    public ExcluirGarcomViewModel(int id, string nome)
+    public ExcluirGarcomViewModel(Guid id, string nome)
     {
         Id = id;
         Nome = nome;
@@ -80,11 +80,11 @@ public class VisualizarGarconsViewModel
 
 public class DetalhesGarcomViewModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string Nome { get; set; }
     public string Cpf { get; set; }
 
-    public DetalhesGarcomViewModel(int id, string nome, string cpf)
+    public DetalhesGarcomViewModel(Guid id, string nome, string cpf)
     {
         Id = id;
         Nome = nome;

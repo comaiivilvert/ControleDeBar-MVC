@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Titulo = "Visualização de Contas";
+}
+
+
+@model VisualizarContasViewModel;
+
+
+<a class="btn btn-primary" href="/Conta/Cadastrar">
+    <i class="bi bi-plus"></i>
+    Cadastar Novo
+</a>
+
+
+<div class="row mt-3">
+    @foreach (DetalhesContaViewModel p in Model.Registros)
+    {
+        <div class="col-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@p.Titular</h5>
+                    <p class="card-text mb-0"><strong>Valor:</strong> @p.EstaAberta</p>
+                </div>
+                <div class="card-actions ms-auto me-3 mb-3 d-flex gap-1">
+                    <a href="/Conta/Editar/@p.Id" class="btn btn-sm btn-primary rounded-circle d-flex justify-content-center align-items-center" style="height: 35px; width: 35px;">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="/Conta/Excluir/@p.Id" class="btn btn-sm btn-danger rounded-circle d-flex justify-content-center align-items-center" style="height: 35px; width: 35px;">
+                        <i class="bi bi-trash2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

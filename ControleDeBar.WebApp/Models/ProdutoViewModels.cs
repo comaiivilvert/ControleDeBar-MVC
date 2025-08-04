@@ -19,7 +19,7 @@ public class CadastrarProdutoViewModel
 }
 public class EditarProdutoViewModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     [Required(ErrorMessage = "O campo \"Nome\" é obrigatório.")]
     [MinLength(2, ErrorMessage = "O campo \"Nome\" deve conter ao menos 2 caracteres.")]
@@ -33,7 +33,7 @@ public class EditarProdutoViewModel
     {
     }
 
-    public EditarProdutoViewModel(int id, string nome, decimal valor)
+    public EditarProdutoViewModel(Guid id, string nome, decimal valor)
     {
         Id = id;
         Nome = nome;
@@ -43,14 +43,14 @@ public class EditarProdutoViewModel
 
 public class ExcluirProdutoViewModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string Nome { get; set; }
 
     public ExcluirProdutoViewModel()
     {
     }
 
-    public ExcluirProdutoViewModel(int id, string nome)
+    public ExcluirProdutoViewModel(Guid id, string nome)
     {
         Id = id;
         Nome = nome;
@@ -78,11 +78,11 @@ public class VisualizarProdutoViewModel
 
 public class DetalhesProdutoViewModel
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string Nome { get; set; }
     public decimal Valor { get; set; }
 
-    public DetalhesProdutoViewModel(int id, string nome, decimal valor)
+    public DetalhesProdutoViewModel(Guid id, string nome, decimal valor)
     {
         Id = id;
         Nome = nome;

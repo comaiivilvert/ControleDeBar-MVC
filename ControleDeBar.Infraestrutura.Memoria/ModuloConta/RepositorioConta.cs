@@ -58,7 +58,7 @@ public class RepositorioConta
         return contasFechadas;
     }
 
-    public Conta SelecionarContaPorId(int idSelecionado)
+    public Conta SelecionarContaPorId(Guid idSelecionado)
     {
         foreach (Conta conta in registros)
         {

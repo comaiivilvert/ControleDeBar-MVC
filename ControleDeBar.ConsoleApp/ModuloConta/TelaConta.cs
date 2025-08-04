@@ -62,7 +62,7 @@ public class TelaConta : ITela
         VisualizarRegistros(false);
 
         Console.Write("Digite o ID da conta que deseja gerenciar: ");
-        int id = Convert.ToInt32(Console.ReadLine());
+        Guid id = Convert.ToInt32(Console.ReadLine());
 
         Conta contaSelecionada = repositorioConta.SelecionarContaPorId(id);
 
@@ -135,7 +135,7 @@ public class TelaConta : ITela
         VisualizarRegistros(false);
 
         Console.Write("Digite o ID da conta que deseja fechar: ");
-        int id = Convert.ToInt32(Console.ReadLine());
+        Guid id = Convert.ToInt32(Console.ReadLine());
 
         Conta contaSelecionada = repositorioConta.SelecionarContaPorId(id);
 
@@ -327,7 +327,7 @@ public class TelaConta : ITela
         Console.WriteLine();
 
         Console.Write("Digite o ID da mesa que deseja ocupar: ");
-        int idMesa = Convert.ToInt32(Console.ReadLine());
+        Guid idMesa = Convert.ToInt32(Console.ReadLine());
 
         Mesa mesaSelecionada = repositorioMesa.SelecionarRegistroPorId(idMesa);
 
@@ -336,7 +336,7 @@ public class TelaConta : ITela
         Console.WriteLine();
 
         Console.Write("Digite o ID do garçom que atenderá a mesa: ");
-        int idGarcom = Convert.ToInt32(Console.ReadLine());
+        Guid idGarcom = Convert.ToInt32(Console.ReadLine());
 
         Garcom garcomSelecionado = repositorioGarcom.SelecionarRegistroPorId(idGarcom);
 
@@ -462,7 +462,7 @@ public class TelaConta : ITela
             Console.WriteLine();
 
             Console.Write("Digite o ID do produto que deseja pedir: ");
-            int idProduto = Convert.ToInt32(Console.ReadLine());
+            Guid idProduto = Convert.ToInt32(Console.ReadLine());
 
             Produto produtoSelecionado = repositorioProduto.SelecionarRegistroPorId(idProduto);
 
@@ -496,7 +496,7 @@ public class TelaConta : ITela
             Console.WriteLine();
 
             Console.Write("Digite o ID do pedido que deseja remover: ");
-            int idPedido = Convert.ToInt32(Console.ReadLine());
+            Guid idPedido = Convert.ToInt32(Console.ReadLine());
 
             contaSelecionada.RemoverPedido(idPedido);
           

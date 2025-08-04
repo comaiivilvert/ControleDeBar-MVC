@@ -28,11 +28,11 @@ namespace ControleDeBar.WebApp.Models
     }
         public class DetalhesMesaViewModel
         {
-            public int Id { get; set; }
+            public Guid Id { get; set; }
             public int Numero { get; set; }
             public int Capacidade { get; set; }
 
-            public DetalhesMesaViewModel(int id, int numero, int capacidade)
+            public DetalhesMesaViewModel(Guid id, int numero, int capacidade)
             {
                 Id = id;
                 Numero = numero;
@@ -59,7 +59,7 @@ namespace ControleDeBar.WebApp.Models
     public class EditarMesaViewModel
     {
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "O campo \"Numero\" é obrigatorio.")]
         [Range(1, 1000, ErrorMessage = "O campo \"Numero\" precisa conter um valor entre 1 e 1000.")]
@@ -73,7 +73,7 @@ namespace ControleDeBar.WebApp.Models
         {
         }
 
-        public EditarMesaViewModel(int id, int numero, int capacidade)
+        public EditarMesaViewModel(Guid id, int numero, int capacidade)
         {
             Id = id;
             Numero = numero;
@@ -84,12 +84,12 @@ namespace ControleDeBar.WebApp.Models
 
     public class ExcluirMesaViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public int Numero { get; set; }
 
         public ExcluirMesaViewModel() { }
 
-        public ExcluirMesaViewModel(int id, int numero)
+        public ExcluirMesaViewModel(Guid id, int numero)
         {
             Id = id;
             Numero = numero;

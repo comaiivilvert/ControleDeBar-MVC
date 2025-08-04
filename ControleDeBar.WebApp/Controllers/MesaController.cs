@@ -50,7 +50,7 @@ namespace ControleDeBar.WebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Editar(int id)
+        public ActionResult Editar(Guid id)
         {
             var registro = repositorioMesa.SelecionarRegistroPorId(id);
 
@@ -76,7 +76,7 @@ namespace ControleDeBar.WebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult Excluir(int id)
+        public ActionResult Excluir(Guid id)
         {
             var registro = repositorioMesa.SelecionarRegistroPorId(id);
 

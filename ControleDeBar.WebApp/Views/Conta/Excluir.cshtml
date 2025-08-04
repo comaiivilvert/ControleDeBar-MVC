@@ -1,13 +1,13 @@
 ﻿@{
-    ViewBag.Titulo = "Exclusão de Produto";
+    ViewBag.Titulo = "Exclusão de Conta";
 }
 
-@model ExcluirProdutoViewModel;
+@model ExcluirContaViewModel;
 
 
 <div class="row justify-content-center">
     <form class="col-6" asp-action="Excluir" method="post">
-        <p>Deseja realmente excluir o registro "@Model.Nome"?</p>
+        <p>Deseja realmente excluir o registro "@Model.Titular"?</p>
 
         <div class="d-flex gap-2 justify-content-end">
             <a asp-action="Index" class="btn btn-outline-primary px-5">Voltar</a>

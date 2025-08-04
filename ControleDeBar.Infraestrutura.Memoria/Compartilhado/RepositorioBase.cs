@@ -15,7 +15,7 @@ public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
         registros[contadorRegistros++] = novoRegistro;
     }
 
-    public bool EditarRegistro(int idSelecionado, Tipo registroAtualizado)
+    public bool EditarRegistro(Guid idSelecionado, Tipo registroAtualizado)
     {
         Tipo registroSelecionado = SelecionarRegistroPorId(idSelecionado);
 
@@ -27,7 +27,7 @@ public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
         return true;
     }
 
-    public bool ExcluirRegistro(int idSelecionado)
+    public bool ExcluirRegistro(Guid idSelecionado)
     {
         for (int i = 0; i < registros.Length; i++)
         {
@@ -50,7 +50,7 @@ public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
         return registros;
     }
 
-    public Tipo SelecionarRegistroPorId(int idSelecionado)
+    public Tipo SelecionarRegistroPorId(Guid idSelecionado)
     {
         for (int i = 0; i < registros.Length; i++)
         {

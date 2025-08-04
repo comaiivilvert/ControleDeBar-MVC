@@ -73,12 +73,12 @@ public abstract class TelaBase<Tipo> where Tipo : EntidadeBase<Tipo>
 
         bool conseguiuConverterId = false;
 
-        int idSelecionado = 0;
+        Guid idSelecionado;
 
         while (!conseguiuConverterId)
         {
             Console.Write("Digite o ID do registro que deseja selecionar: ");
-            conseguiuConverterId = int.TryParse(Console.ReadLine(), out idSelecionado);
+            conseguiuConverterId = idSelecionado;
 
             if (!conseguiuConverterId)
                 ApresentarMensagem("Digite um número válido!", ConsoleColor.DarkYellow);
@@ -119,7 +119,7 @@ public abstract class TelaBase<Tipo> where Tipo : EntidadeBase<Tipo>
 
         bool conseguiuConverterId = false;
 
-        int idSelecionado = 0;
+        Guid idSelecionado = 0;
 
         while (!conseguiuConverterId)
         {

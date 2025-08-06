@@ -16,7 +16,7 @@ public class CadastrarContaViewModel
     public List<SelecionarMesaViewModel> MesasDisponiveis { get; set; }
     public List<SelecionarGarcomViewModel> GarconsDisponiveis { get; set; }
 
-    public Pedido[] Pedidos { get; set; }
+    
 
     public CadastrarContaViewModel()
     {
@@ -26,8 +26,7 @@ public class CadastrarContaViewModel
 
     public CadastrarContaViewModel(List<Mesa> mesas, List<Garcom> garcom) : this()
     {
-        MesasDisponiveis = new List<SelecionarMesaViewModel>();
-        GarconsDisponiveis = new List<SelecionarGarcomViewModel>();
+    
 
         foreach (Mesa m in mesas)
         {
@@ -47,9 +46,6 @@ public class CadastrarContaViewModel
 
 
 }
-
-
-
 public class EditarContaViewModel
 {
     public Guid Id { get; set; }
@@ -61,21 +57,20 @@ public class EditarContaViewModel
     [Required(ErrorMessage = "O campo \"Mesa\" é obrigatório.")]
     public Mesa mesa { get; set; }
 
-    [Required(ErrorMessage = "O campo \"Mesa\" é obrigatório.")]
+    [Required(ErrorMessage = "O campo \"Garcom\" é obrigatório.")]
     public Garcom garcom { get; set; }
 
-    public Pedido[] Pedidos { get; set; }
+    //public Pedido[] Pedidos { get; set; }
     public EditarContaViewModel()
     {
     }
 
-    public EditarContaViewModel(Guid id, string titular, Mesa mesa, Garcom garcom, Pedido[] pedidos)
+    public EditarContaViewModel(Guid id, string titular, Mesa mesa, Garcom garcom)
     {
         Id = id;
         Titular = titular;
         this.mesa = mesa;
         this.garcom = garcom;
-        Pedidos = pedidos;
     }
 }
 

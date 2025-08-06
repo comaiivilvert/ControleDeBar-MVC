@@ -16,6 +16,7 @@ public class ContaController : Controller
     private readonly RepositorioContaEmArquivo repositorioConta;
     private readonly RepositorioMesaEmArquivo repositorioMesa;
     private readonly RepositorioGarcomEmArquivo repositorioGarcom;
+    private readonly RepositorioProdutoEmArquivo repositorioProduto;
 
     public ContaController()
     {
@@ -24,6 +25,7 @@ public class ContaController : Controller
         repositorioConta = new RepositorioContaEmArquivo(contextoDados);
         repositorioMesa = new RepositorioMesaEmArquivo(contextoDados);
         repositorioGarcom = new RepositorioGarcomEmArquivo(contextoDados);
+        repositorioProduto = new RepositorioProdutoEmArquivo(contextoDados);
 
     }
 
@@ -73,8 +75,7 @@ public class ContaController : Controller
             id,
             registro.Titular,
             registro.Mesa,
-            registro.Garcom,
-            registro.Pedidos
+            registro.Garcom
         );
 
         return View(editarVm);

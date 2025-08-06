@@ -13,17 +13,19 @@ public class Conta : EntidadeBase<Conta>
     public DateTime Abertura { get; set; }
     public DateTime Fechamento { get; set; }
     public bool EstaAberta { get; set; }
-    public Pedido[] Pedidos { get; set; }
+    public List<Pedido> Pedidos { get; set; }
 
     public Conta(string titular, Mesa mesa, Garcom garcom)
     {
         Titular = titular;
         Mesa = mesa;
         Garcom = garcom;
-        Pedidos = new Pedido[100];
 
         Abrir();
     }
+
+    public Conta() { }
+
 
     public override void AtualizarRegistro(Conta registroAtualizado)
     {
@@ -67,7 +69,7 @@ public class Conta : EntidadeBase<Conta>
     {
         decimal valorTotal = 0;
 
-        for (int i = 0; i < Pedidos.Length; i++)
+        for (int i = 0; i < Pedidos.Count; i++)
         {
             if (Pedidos[i] == null)
                 continue;
@@ -92,7 +94,7 @@ public class Conta : EntidadeBase<Conta>
     {
         int indiceParaRemover = -1;
 
-        for (int i = 0; i < Pedidos.Length; i++)
+        for (int i = 0; i < Pedidos.Count; i++)
         {
             if (Pedidos[i] == null) continue;
 
@@ -108,7 +110,7 @@ public class Conta : EntidadeBase<Conta>
 
     private int EncontrarIndicePedidosVazio()
     {
-        for (int i = 0; i < Pedidos.Length; i++)
+        for (int i = 0; i < Pedidos.Count; i++)
         {
             if (Pedidos[i] == null)
                 return i;

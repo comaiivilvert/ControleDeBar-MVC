@@ -1,4 +1,5 @@
 ﻿using ControleDeBar.Dominio.ModuloProduto;
+using Microsoft.Win32;
 
 namespace ControleDeBar.Dominio.ModuloConta;
 
@@ -10,8 +11,13 @@ public class Pedido
 
     private static int contadorIds = 0;
 
+
+    public Pedido() { }
+
     public Pedido(Produto produto, int quantidadeEscolhida)
     {
+        Id = Guid.NewGuid();
+
         Produto = produto;
         QuantidadeSolicitada = quantidadeEscolhida;
     }

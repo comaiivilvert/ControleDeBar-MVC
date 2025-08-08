@@ -15,16 +15,18 @@ public class Conta : EntidadeBase<Conta>
     public bool EstaAberta { get; set; }
     public List<Pedido> Pedidos { get; set; }
 
+    public Conta() { }
     public Conta(string titular, Mesa mesa, Garcom garcom)
     {
         Titular = titular;
         Mesa = mesa;
         Garcom = garcom;
+        Pedidos = new List<Pedido>();
 
         Abrir();
     }
 
-    public Conta() { }
+
 
 
     public override void AtualizarRegistro(Conta registroAtualizado)
@@ -71,21 +73,17 @@ public class Conta : EntidadeBase<Conta>
 
         for (int i = 0; i < Pedidos.Count; i++)
         {
-            if (Pedidos[i] == null)
-                continue;
-
             valorTotal += Pedidos[i].CalcularTotalParcial();
         }
 
         return valorTotal;
     }
 
-
     public Pedido RegistrarPedido(Produto produto, int quantidadeEscolhida)
     {
         Pedido novoPedido = new Pedido(produto, quantidadeEscolhida);
 
-        Pedidos[EncontrarIndicePedidosVazio()] = novoPedido;
+        Pedidos.Add(novoPedido);
 
         return novoPedido;
     }
@@ -96,8 +94,6 @@ public class Conta : EntidadeBase<Conta>
 
         for (int i = 0; i < Pedidos.Count; i++)
         {
-            if (Pedidos[i] == null) continue;
-
             if (Pedidos[i].Id == idPedido)
             {
                 indiceParaRemover = i;
@@ -105,17 +101,7 @@ public class Conta : EntidadeBase<Conta>
             }
         }
 
-        Pedidos[indiceParaRemover] = null;
+        Pedidos.RemoveAt(indiceParaRemover);
     }
 
-    private int EncontrarIndicePedidosVazio()
-    {
-        for (int i = 0; i < Pedidos.Count; i++)
-        {
-            if (Pedidos[i] == null)
-                return i;
-        }
-
-        return -1;
-    }
 }
